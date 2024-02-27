@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "node dist/server/index.js",
     "build": "tsc",
     "dev": "ts-node src/server/index.ts"
   },
