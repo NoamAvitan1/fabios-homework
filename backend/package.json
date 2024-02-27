@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "cd ../ && tsc",
+    "build": "tsc",
     "dev": "ts-node src/index.ts"
   },
   "dependencies": {
