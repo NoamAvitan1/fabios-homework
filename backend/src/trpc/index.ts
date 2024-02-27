@@ -18,6 +18,4 @@ export const appRouter = router({
   test: publicProcedure.query(() =>'d')
 });
 
-// Export type router type signature,
-// NOT the router itself.
 export type AppRouter = typeof appRouter;
