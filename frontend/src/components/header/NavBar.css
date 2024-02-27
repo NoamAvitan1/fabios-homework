@@ -1,0 +1,23 @@
+.NavBar{
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid var(--dark-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-bg);
+}
+
+.NavBar .Fabios-Image{
+    width: 100px;
+}
+
+.NavBar .changeTheme-btn{
+    font-size: 50px;
+    bottom: unset;
+    border: unset;
+    background-color: unset;
+    color: var(--dark-bg);
+    cursor: pointer;
+}
+
