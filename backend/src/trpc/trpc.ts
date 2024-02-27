@@ -1,4 +1,4 @@
-const {initTRPC} = require('@trpc/server')
+import { initTRPC } from '@trpc/server';
 
 /**
  * Initialization of tRPC backend
