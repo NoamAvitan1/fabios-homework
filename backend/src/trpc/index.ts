@@ -1,15 +1,17 @@
-import { publicProcedure, router } from './trpc';
-import {z} from 'zod'
-import { prisma } from '../prisma';
-export const ZodUserSchema = z.object({
-  email: z.string().email(),
-  name: z.string(),  
-});
+// import { publicProcedure, router } from './trpc';
+// import {z} from 'zod'
+// import { prisma } from '../prisma';
+// export const ZodUserSchema = z.object({
+//   email: z.string().email(),
+//   name: z.string(),  
+// });
+const {publicProcedure, router} = require('./trpc');
+const prisma = require('../prisma');
 
-export type UserSchemaType = z.infer<typeof ZodUserSchema>;
+// export type UserSchemaType = z.infer<typeof ZodUserSchema>;
 
 export const appRouter = router({
-  user: publicProcedure.query(async (opts) => {
+  user: publicProcedure.query(async (opts:any) => {
     
     const users = await prisma.user.findMany()
     console.log(users)

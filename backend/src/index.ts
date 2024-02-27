@@ -1,9 +1,15 @@
-import { Prisma, PrismaClient } from '@prisma/client'
-import {MongoClient} from 'mongodb'
-import * as trpcExpress from '@trpc/server/adapters/express'
-import express from 'express'
-import cors from 'cors'
-import { appRouter } from './trpc'
+// import { Prisma, PrismaClient } from '@prisma/client'
+// import {MongoClient} from 'mongodb'
+// import * as trpcExpress from '@trpc/server/adapters/express'
+// import express from 'express'
+// import cors from 'cors'
+// import { appRouter } from './trpc'
+const {Prisma, PrismaClient} = require('@prisma/client');
+const {MongoClient} = require('mongodb');
+const trpcExpress = require('@trpc/server/adapters/express');
+const express = require('express');
+const cors = require('cors');
+const appRouter = require('./trpc');
 
 const PORT = 3000;
 const uri = "mongodb+srv://Noam:Noam159753852@cluster0.1juvzwi.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0" || "";
