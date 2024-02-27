@@ -3,12 +3,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
-    "types": [
-      "mongodb",
-      "node",
-      "express",
-      "cors",
-    ],
+    "typeRoots": ["node_modules/@type"],
     "lib": ["dom", "es2015"],
     "esModuleInterop": true
   }
