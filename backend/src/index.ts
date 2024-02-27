@@ -6,7 +6,7 @@ import cors from 'cors'
 import { appRouter } from './trpc'
 
 const PORT = 3000;
-const uri = process.env.DATABASE_URL || "";
+const uri = "mongodb+srv://Noam:Noam159753852@cluster0.1juvzwi.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0" || "";
 const client = new MongoClient(uri);
 const prisma = new PrismaClient()
 const app = express()
