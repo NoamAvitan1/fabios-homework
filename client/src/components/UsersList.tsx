@@ -15,8 +15,6 @@ export function UsersList() {
           <p>{user?.branch}</p>
         </div>
       ))}
-
-      <hr />
     </>
   );
 }
