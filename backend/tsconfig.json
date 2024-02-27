@@ -3,9 +3,11 @@
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "src/typings"
+    "types": [
+      "mongodb",
+      "node",
+      "express",
+      "cors",
     ],
     "lib": ["dom", "es2015"],
     "esModuleInterop": true
