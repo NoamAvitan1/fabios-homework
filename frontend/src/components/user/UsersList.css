@@ -1,0 +1,50 @@
+.UsersList{
+    width: 100%;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+}
+
+.UsersList .data{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.UsersList .filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.UsersList .information{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(215, 213, 211);
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.UsersList .list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.UsersList .usersData{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(216, 228, 228);
+    border-radius: 5px;
+    padding: 14px;
+    color: black;
+    cursor: pointer;
+}
+
+.UsersList .usersData:hover{
+    background-color: rgb(183, 198, 198);
+}
+

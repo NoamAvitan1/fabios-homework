@@ -4,7 +4,7 @@ import React, { createContext, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { trpc } from "./trpc";
-import { UsersList } from "./components/UsersList";
+import { UsersList } from "./components/user/UsersList";
 import { NavBar } from "./components/header/NavBar";
 import "./App.css"; // Import CSS file for theme styles
 
@@ -39,7 +39,7 @@ export default function App() {
     <ThemeContext.Provider value={{ theme, changeTheme }}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
-          <div className='app-provider' data-theme={theme}>
+          <div className="app-provider" data-theme={theme}>
             <NavBar />
             <UsersList />
           </div>

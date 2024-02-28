@@ -11,9 +11,9 @@ export const NavBar = () => {
     if(!themeContext) return;
     const {theme,changeTheme} = themeContext;
   return (
-    <div className='NavBar'>
+    <nav className='NavBar'>
       <img className='Fabios-Image' src="https://fabios.io/wp-content/uploads/2022/06/logo.png" alt="" />
       <button className='changeTheme-btn' onClick={()=>changeTheme()}>{theme === 'dark' ? <PiMoonStarsThin/> : <IoSunnyOutline/>}</button>
-    </div>
+    </nav>
   )
 }

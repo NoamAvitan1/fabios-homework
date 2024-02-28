@@ -1,0 +1,64 @@
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-grow {
+    animation: grow 300ms forwards;
+}
+
+.modal-shrink {
+    animation: shrink 300ms forwards;
+}
+
+.modal-container-vanish {
+  animation: bg-vanish 300ms forwards;
+}
+
+.modal{
+    display: flex;
+    justify-content: center;
+    max-height: 90%;
+    max-width: 95%;
+}
+
+
+@keyframes grow {
+    0% { 
+      transform: scale(0); 
+      opacity: 0; 
+    } 
+    85% { 
+      transform: scale(1.05); 
+      opacity: 1; 
+    } 
+    100% { 
+      transform: scale(1); 
+      opacity: 1; 
+    } 
+  }
+
+@keyframes shrink {
+    0% { 
+        transform: scale(1); 
+        opacity: 1;
+    } 
+    100% {  
+      transform: scale(0);
+      opacity: 0;} 
+  }
+
+
+  @keyframes bg-vanish {
+    to {
+      background-color: transparent;
+    }
+  }
