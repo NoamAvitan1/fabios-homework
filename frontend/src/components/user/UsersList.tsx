@@ -3,24 +3,56 @@ import "./UsersList.css";
 import { AddUser } from "./AddUser";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { BiShekel } from "react-icons/bi";
+import { useState, useRef, useEffect } from "react";
+import { SingleUser } from "./SingleUser";
+import { User as UserInterface } from "../types";
+import { IoMdClose } from "react-icons/io";
+
 
 type Props = {};
 
 export const UsersList = (props: Props) => {
-  const users_list = trpc.userList.useQuery("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [userData, setUserData] = useState<UserInterface | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+
+  const users_list = trpc.userList.useQuery(searchTerm);
   const addUser = trpc.addUser.useMutation({
     onSuccess: () => {
       users_list.refetch();
     },
   });
 
-  if (users_list.isLoading) return <div>Loading....</div>;
-  console.log(users_list.data);
+  const selectUser = (id: string):void => {
+    if(id === userData?.id){
+      setUserData(null);
+      return;
+    }
+    const data = users_list?.data?.find((obj) => obj.id === id);
+    if (data) {
+      setUserData(data);
+    }
+  };
+
+
   return (
     <div className="UsersList">
       <article className="data">
         <section className="filter">
-          <input type="text" placeholder="חיפוש" />
+          <input
+            className="userSearch"
+            ref={inputRef}
+            type="text"
+            placeholder="חיפוש שם"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <AddUser addUser={addUser} />
         </section>
         <section>
@@ -33,21 +65,27 @@ export const UsersList = (props: Props) => {
             <li></li>
           </ul>
         </section>
-        <div className="list">
-          {users_list.data?.map((user) => (
-            <section className="usersData" key={user?.id}>
-              <p>{user?.customer}</p>
-              <p>{user?.date}</p>
-              <p>{user?.branch}</p>
-              <p>{user?.status === "AP" ? "מאושר" : "ממתין לאישור"}</p>
-              <p style={{ display: "flex", justifyContent: "center" }}>
-                {<BiShekel />}1500
-              </p>
-              <p>
-                <IoIosArrowRoundBack style={{ fontSize: "20px" }} />
-              </p>
-            </section>
-          ))}
+        <div className={`${userData === null ? "list" : "list-selected"}`}>
+          <article className="info">
+            {users_list.data?.map((user) => (
+              <section
+                onClick={() => selectUser(user?.id)}
+                className={`${userData?.id !== user?.id ? "usersData" : "usersData-selected"}`}
+                key={user?.id}>
+                <p>{user?.customer}</p>
+                {userData === null ? <p>{user?.date}</p>:null}
+                {userData === null ? <p>{user?.branch}</p>:null}
+                {userData === null ? <p style={{color:`${user?.status === "מאושר" ? 'green' : 'orange'}`}}>{user?.status}</p>:null}
+                {userData === null ? <p style={{ display: "flex", justifyContent: "center" }}>{<BiShekel />}1500</p>:null}
+                {userData === null ?
+                  <IoIosArrowRoundBack style={{ fontSize: "20px" }} /> : userData?.id === user?.id ? <IoMdClose/> : null}
+              </section>
+            ))}
+          </article>
+          {userData && 
+          <section className="user">
+          <SingleUser user={userData} />
+          </section>}
         </div>
       </article>
     </div>

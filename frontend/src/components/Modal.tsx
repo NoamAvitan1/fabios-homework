@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const Modal = (props: Props) => {
-  const [isClosing, setIsClosing] = useState(false);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
 
   const modalRef = useRef<HTMLDivElement>(null)
 

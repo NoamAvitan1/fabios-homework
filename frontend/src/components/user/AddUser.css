@@ -10,8 +10,8 @@
 
 .addUserForm{
     width: 400px;
-    height: 400px;
-    background-color: var(--light-bg);
+    height: 450px;
+    background-color: white;
 }
 
 .form{
@@ -19,16 +19,20 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6px;
 }
 
 .input-section{
+    width: 80%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 5px;
     padding: 8px;
     position: relative;
     margin-top: 10px;
+    border-bottom: 2px solid rgb(16, 10, 181);
 }
 
 .inputField{
@@ -36,20 +40,36 @@
     padding-top: 12px;
     outline: none;
     border: none;
-    border-bottom: 2px solid rgb(16, 10, 181);
+    width: 80%;
 }
 
 .labelInput{
     color: blue;
     transition-duration: 0.8s;
     position: absolute;
-    right: 8px;
-    top: 10px;
+    right: 2px;
+    top: 18px;
 }
 
 input:active,:focus + label{
-    top: -8px;
-    opacity: 0.7;
+    top: -3px;
+    opacity: 0.6;
+}
+
+
+.addUserButton{
+    bottom: unset;
+    border: unset;
+    background-color: rgb(98, 187, 98);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 80%;
+}
+
+.error-message{
+    color: red;
 }
 
 

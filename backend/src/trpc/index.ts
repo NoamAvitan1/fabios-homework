@@ -4,15 +4,8 @@ import { prisma } from '../prisma';
 export const ZodUser = z.object({
   date: z.string(), 
   time: z.string(), 
-  notes: z.string().optional(),
   branch: z.string(),
-  branch_id: z.number(),
-  recurrence: z.number(),
   customer: z.string(),
-  customer_id: z.number(),
-  num_of_guests: z.number().optional(),
-  source: z.string(),
-  status: z.string(),
 });
 
 export type UserSchemaType = z.infer<typeof ZodUser>;

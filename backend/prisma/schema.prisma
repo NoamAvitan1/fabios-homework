@@ -8,21 +8,21 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  date           String
-  time           String  
-  notes          String?   
-  prediction     Boolean   @default(false)
-  branch         String
-  branch_id      Int
-  order_type     String?   @default("")
-  event_id       Int?      
-  recurrence     Int
-  customer       String
-  customer_id    Int
-  num_of_guests  Int?      @default(0)
-  source         String  
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @default(now())
-  status         String
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  date          String
+  time          String
+  notes         String?  @default("")
+  prediction    Boolean  @default(false)
+  branch        String
+  branch_id     Int      @default(1)
+  order_type    String?  @default("")
+  event_id      Int?     @default(1)
+  recurrence    Int      @default(1)
+  customer      String
+  customer_id   Int      @default(1)
+  num_of_guests Int?     @default(0)
+  source        String   @default("")
+  created_at    DateTime @default(now())
+  updated_at    DateTime @default(now())
+  status        String   @default("")
 }

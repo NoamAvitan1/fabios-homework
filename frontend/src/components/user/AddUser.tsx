@@ -3,26 +3,12 @@ import { Modal } from "../Modal";
 import "./AddUser.css";
 import { useForm } from "react-hook-form";
 
-interface User {
-  date: string;
-  time: string;
-  notes: string;
-  branch: string;
-  branch_id: number;
-  recurrence: number;
-  customer: string;
-  customer_id: number;
-  source: string;
-  created_at: Date;
-  updated_at: Date;
-  status: string;
-}
 
 type Props = {
-  addUser: any; //could not find the type expected here.
+  addUser: any;
 };
 
-export const AddUser = (props: Props) => {
+export const AddUser = ({addUser}: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     register,
@@ -30,23 +16,6 @@ export const AddUser = (props: Props) => {
     reset,
     formState: { errors },
   } = useForm();
-  // const add = () => {
-  //   const obj = {
-  //     date: "2024-02-27",
-  //     time: "23:59",
-  //     notes: "",
-  //     branch: "מטבח מרכזי",
-  //     branch_id: 1,
-  //     recurrence: 1,
-  //     customer: "אורי וגל שכטר",
-  //     customer_id: 14,
-  //     source: "הוקלד ידנית",
-  //     created_at: new Date(),
-  //     updated_at: new Date(),
-  //     status: "AP",
-  //   };
-  //   addUser.mutate(obj);
-  // };
   return (
     <div>
       <button className="addButton" onClick={() => setIsOpen(true)}>
@@ -54,28 +23,46 @@ export const AddUser = (props: Props) => {
       </button>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <section className="addUserForm">
-          <form className="form">
+          <form onSubmit={handleSubmit(data=>addUser.mutate(data))} className="form">
             <div className="input-section">
-              <input {...register("customer",{
+              <input placeholder="נועם" {...register("customer",{
                 required: {value:true,message:"הכנס שם"},
                 minLength:{value:2,message:'לפחות 2 אותיות'},
                 maxLength: {value:15,message:'לפחות 15 אותיות'}
               })} className="inputField" type="text" />
               <label className="labelInput" htmlFor="">שם:</label>
             </div>
+              {errors?.customer && <span className="error-message">{errors.customer.message?.toString()}</span>}
             <div className="input-section">
-              <input className="inputField" type="text" />
+              <input placeholder="מטבח מקומי"
+                {...register("branch",{
+                  required: {value:true,message:"הכנס מקום"},
+                  minLength:{value:2,message:'לפחות 2 אותיות'},
+                  maxLength: {value:15,message:'לפחות 15 אותיות'}
+                })}
+              className="inputField" type="text" />
               <label className="labelInput" htmlFor="">מקום:</label>
             </div>
+            {errors?.branch && <span className="error-message">{errors.branch.message?.toString()}</span>}
             <div className="input-section">
-              <input className="inputField" type="text" />
+              <input placeholder="22/4/22" {...register("date",{
+                  required: {value:true,message:"הכנס תאריך"},
+                  minLength:{value:2,message:'לפחות 2 אותיות'},
+                  maxLength: {value:15,message:'לפחות 15 אותיות'}
+                })} className="inputField" type="text" />
               <label className="labelInput" htmlFor="">תאריך:</label>
             </div>
+            {errors?.date && <span className="error-message">{errors.date.message?.toString()}</span>}
             <div className="input-section">
-              <input className="inputField" type="text" />
+              <input placeholder="14:24" {...register("time",{
+                  required: {value:true,message:"הכנס שעה"},
+                  minLength:{value:2,message:'לפחות 2 אותיות'},
+                  maxLength: {value:15,message:'לפחות 15 אותיות'}
+                })} className="inputField" type="text" />
               <label className="labelInput" htmlFor="">שעה:</label>
             </div>
-            <button className="addButton">הוסף</button>
+            {errors?.time && <span className="error-message">{errors.time.message?.toString()}</span>}
+            <button className="addUserButton">הוסף</button>
           </form>
         </section>
       </Modal>
