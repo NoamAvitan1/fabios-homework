@@ -17,6 +17,8 @@ export const AddUser = ({addUser}: Props) => {
     reset,
     formState: { errors },
   } = useForm();
+
+
   return (
     <div>
       <button className="addButton" onClick={() => setIsOpen(true)}>
@@ -25,7 +27,10 @@ export const AddUser = ({addUser}: Props) => {
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <section className="addUserForm">
         <IoMdClose style={{cursor:'pointer', position:'absolute', fontSize:'25px'}} id="close-button"/>
-          <form onSubmit={handleSubmit(data=>addUser.mutate(data))} className="form">
+          <form onSubmit={handleSubmit((data)=>{
+            setIsOpen(false);
+            reset();
+            return addUser.mutate(data)})} className="form">
             <div className="input-section">
               <input placeholder="נועם" {...register("customer",{
                 required: {value:true,message:"הכנס שם"},

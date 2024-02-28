@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { SingleUser } from "./SingleUser";
 import { User as UserInterface } from "../types";
 import { IoMdClose } from "react-icons/io";
-
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
 type Props = {};
 
@@ -28,6 +28,16 @@ export const UsersList = (props: Props) => {
       users_list.refetch();
     },
   });
+  const deleteUser = trpc.deleteUser.useMutation({
+    onSuccess: () => {
+      users_list.refetch();
+    },
+  })
+  const updateUser = trpc.updateUser.useMutation({
+    onSuccess: () => {
+      users_list.refetch();
+    }
+  })
 
   const selectUser = (id: string):void => {
     if(id === userData?.id){
@@ -39,7 +49,6 @@ export const UsersList = (props: Props) => {
       setUserData(data);
     }
   };
-
 
   return (
     <div className="UsersList">
@@ -66,7 +75,7 @@ export const UsersList = (props: Props) => {
           </ul>
         </section>
         <div className={`${userData === null ? "list" : "list-selected"}`}>
-          <article className="info">
+          <article className={`${userData === null ?'info' : 'infoData'}`}>
             {users_list.data?.map((user) => (
               <section
                 onClick={() => selectUser(user?.id)}
@@ -77,14 +86,15 @@ export const UsersList = (props: Props) => {
                 {userData === null ? <p>{user?.branch}</p>:null}
                 {userData === null ? <p style={{color:`${user?.status === "מאושר" ? 'green' : 'orange'}`}}>{user?.status}</p>:null}
                 {userData === null ? <p style={{ display: "flex", justifyContent: "center" }}>{<BiShekel />}1500</p>:null}
-                {userData === null ?
-                  <IoIosArrowRoundBack style={{ fontSize: "20px" }} /> : userData?.id === user?.id ? <IoMdClose/> : null}
+                {userData === null ?<p onClick={(e)=>{e.stopPropagation(),deleteUser.mutate(user?.id)}} className="delete-icon">{<MdOutlineDeleteOutline/>}</p> :null}
+                {userData === null ?<IoIosArrowRoundBack style={{ fontSize: "20px" }} /> : userData?.id === user?.id ? <IoMdClose/> : null}
               </section>
             ))}
           </article>
           {userData && 
           <section className="user">
-          <SingleUser user={userData} />
+            <IoMdClose onClick={()=>selectUser(userData?.id)} className="icon-close"/> 
+          <SingleUser user={userData} updateUser={updateUser} />
           </section>}
         </div>
       </article>

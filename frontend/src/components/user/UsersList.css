@@ -5,9 +5,17 @@
     display: flex;
     justify-content: center;
     margin-top: -40px;
+    background-color: var(--light-bg);
 }
 
 .UsersList .info{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.UsersList .infoData{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -58,6 +66,7 @@
     padding: 14px;
     color: black;
     cursor: pointer;
+    position: relative;
 }
 
 .UsersList .usersData-selected{
@@ -86,10 +95,38 @@
     border-radius: 5px;
 }
 
+.icon-close{
+    display: none;
+    cursor: pointer;
+}
+
+.delete-icon{
+    position: absolute;
+    left: 40px;
+    top: 16px;
+    color: red;
+    cursor: pointer;
+}
+
 @media(width < 550px){
    .UsersList .usersData{
     display: flex;
     flex-wrap: wrap;
-    height: 80px;
+    height: 100px;
+    }
+    .UsersList .infoData{
+        display: none;
+    }
+    .user{
+        width: 100%;
+    }
+    .icon-close{
+        display: block;
+        padding: 4px;
+    }
+    .delete-icon{
+        position: relative;
+        left: 0;
+        top: 0;
     }
 }

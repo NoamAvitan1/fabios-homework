@@ -4,6 +4,7 @@
     display: flex;
     padding: 5px;
     gap: 20px;
+    position: relative;
 }
 
 .SingleUser .UserData{
@@ -19,5 +20,52 @@
 
 .SingleUser .labelInfo{
     color: rgb(108, 113, 118);
+}
+
+.edit{
+    left: 11px;
+    top: 0;
+    position: absolute;
+    border: unset;
+    padding: 10px;
+    background-color: rgb(184, 178, 178);
+    cursor: pointer;
+}
+
+.update-user{
+    width: 400px;
+    height: 450px;
+    background-color: white;
+}
+
+.formUpdate{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.inputFields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.save{
+    background-color: rgb(98, 187, 98);
+    border: unset;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+@media (width<550px){
+    .edit{
+        top: -23px;
+    }
 }
 
