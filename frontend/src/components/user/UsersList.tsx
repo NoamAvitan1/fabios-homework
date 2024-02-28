@@ -34,8 +34,13 @@ export const UsersList = (props: Props) => {
     },
   })
   const updateUser = trpc.updateUser.useMutation({
-    onSuccess: () => {
-      users_list.refetch();
+    onSuccess: async() => {
+      await users_list.refetch();
+      const user = users_list?.data?.find((obj) => obj.id === userData?.id)
+      if(user){
+        console.log(user)
+        setUserData(user);
+      }
     }
   })
 
