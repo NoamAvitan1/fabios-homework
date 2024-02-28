@@ -5,9 +5,6 @@ import express from 'express'
 import cors from 'cors'
 import { appRouter } from './trpc'
 
-const PORT = 3000;
-const uri = "mongodb+srv://Noam:Noam159753852@cluster0.1juvzwi.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0" || "";
-const client = new MongoClient(uri);
 const app = express()
 
 app.use(cors({
@@ -23,25 +20,8 @@ app.use(
   }),
 ); 
 
-async function startServer() {
-  try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error('Error connecting to MongoDB:', err);
-    process.exit(1); // Exit the process if unable to connect to MongoDB
-  }
-}
-
-startServer();
-
-
-// const server = app.listen(3000, () =>
-//   console.log(`
-// 🚀 Server ready at: http://localhost:3000
-// ⭐️ See sample requests: http://pris.ly/e/ts/rest-express#3-using-the-rest-api`),
-// )
+const server = app.listen(3000, () =>
+  console.log(`
+🚀 Server ready at: http://localhost:3000
+⭐️ See sample requests: http://pris.ly/e/ts/rest-express#3-using-the-rest-api`),
+)

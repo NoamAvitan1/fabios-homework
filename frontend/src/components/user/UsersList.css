@@ -86,3 +86,10 @@
     border-radius: 5px;
 }
 
+@media(width < 550px){
+   .UsersList .usersData{
+    display: flex;
+    flex-wrap: wrap;
+    height: 80px;
+    }
+}

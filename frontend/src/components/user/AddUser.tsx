@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Modal } from "../Modal";
 import "./AddUser.css";
 import { useForm } from "react-hook-form";
+import { IoMdClose } from "react-icons/io";
 
 
 type Props = {
@@ -23,6 +24,7 @@ export const AddUser = ({addUser}: Props) => {
       </button>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <section className="addUserForm">
+        <IoMdClose style={{cursor:'pointer', position:'absolute', fontSize:'25px'}} id="close-button"/>
           <form onSubmit={handleSubmit(data=>addUser.mutate(data))} className="form">
             <div className="input-section">
               <input placeholder="נועם" {...register("customer",{
