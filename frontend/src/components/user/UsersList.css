@@ -103,12 +103,27 @@
 .delete-icon{
     position: absolute;
     left: 40px;
-    top: 16px;
+    top: 20px;
     color: red;
     cursor: pointer;
 }
 
-@media(width < 550px){
+.status-progress{
+    position: relative;
+    background-color: orange;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.status-agreed{
+    position: relative;
+    background-color: rgb(90, 176, 90);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+@media(width < 600px){
    .UsersList .usersData{
     display: flex;
     flex-wrap: wrap;
@@ -125,8 +140,19 @@
         padding: 4px;
     }
     .delete-icon{
-        position: relative;
-        left: 0;
-        top: 0;
+        right: 65px;
+        top: 10px;
+    }
+    .status-agreed{
+        position: absolute;
+        top: 5px;
+    }
+    .status-progress{
+        position:absolute;
+        top: 5px;
+    }
+    .userDate{
+        position: absolute;
+        bottom: 10px;
     }
 }

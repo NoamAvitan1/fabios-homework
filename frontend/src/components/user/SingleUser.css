@@ -64,7 +64,7 @@
     cursor: pointer;
 }
 
-@media (width<550px){
+@media (width<600px){
     .edit{
         top: -23px;
     }
