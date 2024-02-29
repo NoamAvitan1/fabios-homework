@@ -88,7 +88,7 @@ export const UsersList = (props: Props) => {
                 }`}
                 key={user?.id}
               >
-                <p>{user?.customer}</p>
+                <p style={{ fontFamily: "sans-serif" }}>{user?.customer}</p>
                 {userData === null ? (
                   <p className="userDate">{user?.date}</p>
                 ) : null}
