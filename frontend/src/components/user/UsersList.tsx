@@ -62,7 +62,7 @@ export const UsersList = (props: Props) => {
             className="userSearch"
             ref={inputRef}
             type="text"
-            placeholder="חיפוש שם..."
+            placeholder="חיפוש לפי שם..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
