@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Modal } from "../Modal";
 import { IoMdClose } from "react-icons/io";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Props = {
   user?: UserInterface | null;
@@ -20,6 +22,8 @@ export const SingleUser = ({ user, updateUser }: Props) => {
     formState: { errors },
   } = useForm();
 
+  const notify = () => toast("User updated!");
+
   return (
     <div className="SingleUser">
       <button onClick={() => setIsOpen(true)} className="edit">
@@ -27,18 +31,12 @@ export const SingleUser = ({ user, updateUser }: Props) => {
       </button>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className="update-user">
-          <IoMdClose
-            style={{
-              cursor: "pointer",
-              position: "absolute",
-              fontSize: "25px",
-            }}
-            id="close-button"
-          />
+          <IoMdClose className="closeIcon" id="close-button" />
           <form
             onSubmit={handleSubmit((data) => {
               setIsOpen(false);
               reset();
+              notify();
               updateUser.mutate({ ...data, ["id"]: user?.id });
             })}
             className="formUpdate"
@@ -151,6 +149,7 @@ export const SingleUser = ({ user, updateUser }: Props) => {
         <p style={{ padding: "5px" }}>{user?.branch}</p>
         <p style={{ padding: "5px" }}>{user?.notes}</p>
       </section>
+      <ToastContainer />
     </div>
   );
 };

@@ -63,6 +63,12 @@
     justify-content: space-around;
 }
 
+.closeIcon{
+    cursor: pointer;
+    position: absolute;
+    font-size: 25px;
+}
+
 .inputFields{
     display: flex;
     flex-direction: column;
