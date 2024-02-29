@@ -23,6 +23,22 @@
     padding: 5px;
 }
 
+.statusProgress{
+    background-color: rgb(200, 157, 76);
+    padding: 5px;
+    border-radius: 5px; 
+    width: fit-content;
+    color: var(--dark-bg);
+}
+
+.statusAgreed{
+    background-color: rgb(90, 176, 90);
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    color: var(--dark-bg);
+}
+
 .edit{
     left: 10px;
     top: 0;
@@ -68,7 +84,7 @@
 
 @media (width<600px){
     .edit{
-        top: -23px;
+        top: -24px;
     }
 }
 

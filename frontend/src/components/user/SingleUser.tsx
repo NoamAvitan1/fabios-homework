@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const SingleUser = ({ user, updateUser }: Props) => {
-  const labels: string[] = ["שם", "תאריך", "מקום", "סטטוס", "הערות"];
+  const labels: string[] = ["סטטוס", "שם", "תאריך", "מקום", "הערות"];
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     register,
@@ -141,7 +141,7 @@ export const SingleUser = ({ user, updateUser }: Props) => {
       <section className="user-section">
         <p
           className={`${
-            user?.status === "מאושר" ? "status-agreed" : "status-progress"
+            user?.status === "מאושר" ? "statusAgreed" : "statusProgress"
           }`}
         >
           {user?.status}
@@ -149,7 +149,7 @@ export const SingleUser = ({ user, updateUser }: Props) => {
         <p style={{ padding: "5px" }}>{user?.customer}</p>
         <p style={{ padding: "5px" }}>{user?.updated_at.substring(0, 10)}</p>
         <p style={{ padding: "5px" }}>{user?.branch}</p>
-        <p style={{ padding: "5px" }} >{user?.notes}</p>
+        <p style={{ padding: "5px" }}>{user?.notes}</p>
       </section>
     </div>
   );

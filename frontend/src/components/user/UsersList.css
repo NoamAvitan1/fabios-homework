@@ -87,6 +87,7 @@
     outline: none;
     border: 2px solid rgb(184, 169, 169);
     border-radius: 4px;
+    width: 30%;
 }
 
 .user{
@@ -114,6 +115,7 @@
     padding: 5px;
     border-radius: 5px; 
     width: fit-content;
+    color: var(--dark-bg);
 }
 
 .status-agreed{
@@ -122,6 +124,13 @@
     padding: 5px;
     border-radius: 5px;
     width: fit-content;
+    color: var(--dark-bg);
+}
+
+@media(width<1000px){
+    .UsersList .userSearch{
+        width: 40%;
+    }
 }
 
 
