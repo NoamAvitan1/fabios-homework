@@ -70,7 +70,7 @@
 }
 
 .UsersList .usersData-selected{
-  background-color: rgb(136, 196, 136);
+  background-color: rgb(174, 222, 174);
   display: flex;
   gap: 10px;
   cursor: pointer;
@@ -83,9 +83,9 @@
 }
 
 .UsersList .userSearch{
-    padding: 4px;
+    padding: 10px;
     outline: none;
-    border: 2px solid black;
+    border: 2px solid rgb(184, 169, 169);
     border-radius: 4px;
 }
 
@@ -112,7 +112,8 @@
     position: relative;
     background-color: rgb(200, 157, 76);
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 5px; 
+    width: fit-content;
 }
 
 .status-agreed{
@@ -120,6 +121,7 @@
     background-color: rgb(90, 176, 90);
     padding: 5px;
     border-radius: 5px;
+    width: fit-content;
 }
 
 

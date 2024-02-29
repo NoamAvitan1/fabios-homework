@@ -62,7 +62,7 @@ export const UsersList = (props: Props) => {
             className="userSearch"
             ref={inputRef}
             type="text"
-            placeholder="חיפוש שם"
+            placeholder="חיפוש שם..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -89,7 +89,9 @@ export const UsersList = (props: Props) => {
                 key={user?.id}
               >
                 <p>{user?.customer}</p>
-                {userData === null ? <p className="userDate">{user?.date}</p> : null}
+                {userData === null ? (
+                  <p className="userDate">{user?.date}</p>
+                ) : null}
                 {userData === null ? <p>{user?.branch}</p> : null}
                 {userData === null ? (
                   <p

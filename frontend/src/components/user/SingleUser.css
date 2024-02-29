@@ -20,13 +20,15 @@
 
 .SingleUser .labelInfo{
     color: rgb(108, 113, 118);
+    padding: 5px;
 }
 
 .edit{
-    left: 11px;
+    left: 10px;
     top: 0;
     position: absolute;
     border: unset;
+    border-radius: 0px 0px 5px 0px;
     padding: 10px;
     background-color: rgb(184, 178, 178);
     cursor: pointer;
